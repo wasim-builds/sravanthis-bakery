@@ -1,0 +1,78 @@
+# Sravanthi's Bakery — Comprehensive Product Roadmap & Enhancement Plan
+
+**Project**: Sravanthi's Bakery (E-Commerce Web Experience)  
+**Repository**: [https://github.com/wasim-builds/sravanthis-bakery](https://github.com/wasim-builds/sravanthis-bakery)  
+**Local Workspace**: `/home/wasim/dev/bakery-website`  
+**Base Architecture**: React 18, Vite 6, TypeScript 5.7, Tailwind CSS 3.4, Lucide Icons, Canvas Confetti  
+**Inspiration & Benchmark**: [Minnie Inti Ruchulu](https://minnieintiruchulu.com/)
+
+---
+
+## 1. Current Completed State (Phase 1 Delivered)
+
+- [x] **Reverse-Engineered Heritage Theme**: Deep burgundy (`#56150E`), warm cream (`#F1DBBB`, `#FCF7F0`), amber crust (`#8B4513`, `#C86A24`), gold badges, and Signika/Poppins typography.
+- [x] **Top Dual Announcement Bar**: Worldwide & Pan-India express delivery notification + WhatsApp quick ordering hotline.
+- [x] **Header & Navigation**: Brand logo with warm bread emblem, live search with instant cross-category search, wishlist indicator, and shopping basket with live total counter.
+- [x] **Hero Showcase**: Artisanal bakes narrative, batch status badge, and immediate shopping CTAs.
+- [x] **Circular Story Bubbles**: Horizontal scrollable categories with badges (`Sourdough`, `Croissants`, `Cakes`, `Cookies`, `Savoury`, `Healthy`).
+- [x] **Interactive Product Cards**: Dynamic weight/size swatches (`450g / 850g / 1.2kg` or `Single / Box of 4`), instant price recalculation, discount ribbons, vegetarian/eggless marks, and wishlist toggle.
+- [x] **Quick View Modal**: Detailed ingredient list, shelf-life instructions, package selector, quantity stepper, and quick WhatsApp link.
+- [x] **Slide-Out Cart Basket**: Animated **Free Delivery Progress Meter** (₹499 threshold), quantity controls, item remover, and custom baking instructions note.
+- [x] **Multi-Channel Ordering**:
+  - **1-Click WhatsApp Direct Order**: Automatically constructs formatted order message with items, selected weights, quantities, subtotal, and baking notes.
+  - **Interactive Checkout Modal**: Address and contact form, fresh bake delivery slot selector (Morning / Noon / Evening), payment method picker, and celebratory confetti animation.
+- [x] **Trust Features & Testimonials**: 100% fresh daily at 5 AM, real dairy butter, zero preservatives, customer quotes from Hyderabad & Bengaluru.
+- [x] **Instagram & Footer**: Oven-fresh photo grid, kitchen timings, FSSAI compliance badge, newsletter signup, and sticky floating WhatsApp widget.
+- [x] **Git & GitHub Integration**: Repository created, committed with SSH signatures, and pushed to `wasim-builds/sravanthis-bakery` (branch `main`).
+
+---
+
+## 2. Planned Next Steps (Phase 2 Roadmap — To Resume Tomorrow)
+
+### Track A: High-Impact Customer Conversion Features
+1. **Custom Cake Personalization & Piping Message**:
+   - Add text input on celebration cakes: *"Message on Cake (Max 30 characters)"* (*e.g. "Happy 30th Birthday Sravanthi!"*).
+   - Selection for chocolate plaque vs. white fondant banner.
+   - Dietary choice toggle: 100% Eggless vs. Traditional.
+2. **"Build Your Own Assorted Box" Modal (Croissants, Cookies & Puffs)**:
+   - Allow customer to pick any 4 or 6 bakes for a fixed box price:
+     * *Example Box of 4*: 2 Normandy Butter Croissants + 1 Pain au Chocolat + 1 Cinnamon Brioche.
+     * Dynamic counter showing items remaining to complete the box (`3/4 selected`).
+3. **Pincode Delivery Radius Checker**:
+   - Location input widget on the announcement banner or cart drawer:
+     * *Hyderabad Core (Pincodes 500001–500090)*: "⚡ Same-Day 2-Hour Express Delivery via Dunzo/Porter".
+     * *Rest of India*: "🚚 24–48 Hr Vacuum-Sealed Express Courier".
+4. **Live Oven Baking Countdown Ticker**:
+   - Subtle animated badge: *"Next warm sourdough batch coming out of the oven in 42 mins!"* creates appetite appeal and reinforces daily fresh-baked promise.
+
+### Track B: Payments & Retention
+1. **Dynamic Zero-Fee UPI QR Code Generator**:
+   - Modal generating an instant UPI QR code with deep links for Google Pay, PhonePe, and Paytm with pre-filled amount and order ID.
+2. **Weekly Sourdough Subscription Model**:
+   - "Subscribe & Save 10%" option on daily staples (Heritage Sourdough, Millet Wellness Loaf) with delivery days (e.g. Every Tuesday & Friday).
+3. **PWA (Progressive Web App) Setup**:
+   - Configure `vite-plugin-pwa` with web app manifest and icons so customers can install the app to their phone home screen.
+
+---
+
+## 3. Deployment & Production Hosting Options
+
+1. **Vercel / Cloudflare Pages / GitHub Pages**:
+   - Add automated GitHub Actions deployment workflow (`.github/workflows/deploy.yml`) to deploy the Vite build instantly on every push.
+2. **Domain Configuration**:
+   - Support custom domain mapping (*e.g., `sravanthisbakery.com`*).
+
+---
+
+## 4. Quick Resume Commands for Next Session
+
+```bash
+# 1. Navigate to workspace
+cd /home/wasim/dev/bakery-website
+
+# 2. Start local development server
+bun run dev
+
+# 3. Open in browser
+# http://localhost:5173
+```
