@@ -34,7 +34,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ onExploreClick, onCatego
           </h1>
 
           <p className="text-stone-200 text-sm sm:text-base lg:text-lg max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
-            Inspired by authentic home recipes, our artisanal bakehouse delivers naturally wild-fermented sourdoughs, 27-layer butter croissants, rich celebratory cakes, and signature savouries baked daily with 100% pure butter and zero preservatives.
+            Inspired by authentic home recipes, Sravanthi's Bakery delivers naturally wild-fermented sourdoughs, 27-layer butter croissants, rich celebratory cakes, and signature savouries baked daily with 100% pure butter and zero preservatives.
           </p>
 
           {/* Action CTAs */}

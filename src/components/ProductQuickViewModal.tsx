@@ -39,7 +39,7 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Minnie's Bakehouse! I'd like to order: ${product.name} (${currentVariant.weight}) x ${quantity} qty for ₹${currentVariant.price * quantity}.`
+    `Hello Sravanthi's Bakery! I'd like to order: ${product.name} (${currentVariant.weight}) x ${quantity} qty for ₹${currentVariant.price * quantity}.`
   );
 
   return (

@@ -11,7 +11,7 @@ export const FloatingWhatsApp: React.FC = () => {
 
       {/* Floating Action Button */}
       <a
-        href="https://wa.me/919876543210?text=Hello%20Minnie's%20Artisanal%20Bakehouse!%20I%20have%20a%20question%20about%20your%20fresh%20bakes."
+        href="https://wa.me/919876543210?text=Hello%20Sravanthi's%20Bakery!%20I%20have%20a%20question%20about%20your%20fresh%20bakes."
         target="_blank"
         rel="noopener noreferrer"
         className="w-13 h-13 sm:w-14 sm:h-14 bg-bakery-whatsapp hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-warm hover:shadow-2xl transition-all transform hover:scale-110 active:scale-95 animate-pulse"

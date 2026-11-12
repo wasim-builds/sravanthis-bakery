@@ -26,7 +26,7 @@ export const App: React.FC = () => {
   // Persisted Cart
   const [cart, setCart] = useState<CartItem[]>(() => {
     try {
-      const saved = localStorage.getItem('minnies_bakery_cart');
+      const saved = localStorage.getItem('sravanthi_bakery_cart');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -36,7 +36,7 @@ export const App: React.FC = () => {
   // Persisted Wishlist
   const [wishlist, setWishlist] = useState<BakeryProduct[]>(() => {
     try {
-      const saved = localStorage.getItem('minnies_bakery_wishlist');
+      const saved = localStorage.getItem('sravanthi_bakery_wishlist');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -52,7 +52,7 @@ export const App: React.FC = () => {
   // Sync cart & wishlist with localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('minnies_bakery_cart', JSON.stringify(cart));
+      localStorage.setItem('sravanthi_bakery_cart', JSON.stringify(cart));
     } catch (e) {
       console.error(e);
     }
@@ -60,7 +60,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     try {
-      localStorage.setItem('minnies_bakery_wishlist', JSON.stringify(wishlist));
+      localStorage.setItem('sravanthi_bakery_wishlist', JSON.stringify(wishlist));
     } catch (e) {
       console.error(e);
     }

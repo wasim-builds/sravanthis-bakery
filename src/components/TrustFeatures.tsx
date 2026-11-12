@@ -30,7 +30,7 @@ export const TrustFeatures: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="font-signika text-2xl sm:text-3xl font-bold text-bakery-burgundy">
-            Why Food Lovers Cherish Minnie's Bakehouse
+            Why Food Lovers Cherish Sravanthi's Bakery
           </h2>
           <p className="text-stone-600 text-xs sm:text-sm mt-1">
             Pure ingredients, authentic recipes, and time-honored artisanal baking standards.

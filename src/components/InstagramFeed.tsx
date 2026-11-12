@@ -50,7 +50,7 @@ export const InstagramFeed: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between mb-8 text-center sm:text-left gap-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-bakery-amber">
-              @minnies.artisanal.bakehouse
+              @sravanthis.bakery
             </span>
             <h2 className="font-signika text-2xl font-bold text-bakery-burgundy mt-1">
               Fresh Out of the Oven Gallery

@@ -70,10 +70,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-signika text-2xl sm:text-3xl font-bold tracking-tight text-bakery-burgundy">
-                  Minnie's
+                  Sravanthi's
                 </span>
                 <span className="font-signika text-xl sm:text-2xl font-normal text-bakery-crust">
-                  Bakehouse
+                  Bakery
                 </span>
               </div>
               <p className="text-[10px] sm:text-xs text-stone-500 font-medium tracking-wider uppercase flex items-center gap-1">
@@ -195,7 +195,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="w-4/5 max-w-xs bg-white h-full shadow-2xl p-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-stone-100">
-                <span className="font-signika font-bold text-lg text-bakery-burgundy">Browse Menu</span>
+                <span className="font-signika font-bold text-lg text-bakery-burgundy">Sravanthi's Bakery</span>
                 <button onClick={() => setMobileMenuOpen(false)} className="text-stone-400 hover:text-stone-700">
                   <X className="w-5 h-5" />
                 </button>

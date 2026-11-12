@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
                 🥐
               </div>
               <span className="font-signika text-2xl font-bold text-bakery-cream">
-                Minnie's Artisanal Bakehouse
+                Sravanthi's Bakery
               </span>
             </div>
 
@@ -94,7 +94,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-bakery-gold shrink-0" />
-                <span>Email: orders@minniesbakehouse.com</span>
+                <span>Email: orders@sravanthisbakery.com</span>
               </p>
             </div>
           </div>
@@ -179,7 +179,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
 
         {/* Bottom Bar: Copyright & Payment Badges */}
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-400 gap-4">
-          <p>© {new Date().getFullYear()} Minnie's Artisanal Bakehouse (Inspired by Minnie Inti Ruchulu). All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Sravanthi's Bakery (Inspired by Minnie Inti Ruchulu). All rights reserved.</p>
           
           <div className="flex items-center gap-2">
             <span className="bg-white/10 px-2 py-0.5 rounded text-[10px] text-white">UPI</span>

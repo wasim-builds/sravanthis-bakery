@@ -17,7 +17,7 @@ export const AnnouncementBar: React.FC = () => {
             <Clock className="w-3.5 h-3.5 text-bakery-amber" /> Fresh batches dispatched twice daily (7 AM & 3 PM)
           </span>
           <a 
-            href="https://wa.me/919876543210?text=Hi%20Minnie's%20Artisanal%20Bakehouse,%20I%20would%20like%20to%20order%20fresh%20bakes!" 
+            href="https://wa.me/919876543210?text=Hi%20Sravanthi's%20Bakery,%20I%20would%20like%20to%20order%20fresh%20bakes!" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-1 text-white hover:text-bakery-gold font-medium transition-colors"

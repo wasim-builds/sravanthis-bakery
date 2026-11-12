@@ -38,7 +38,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       return;
     }
 
-    const randomId = 'MB-' + Math.floor(100000 + Math.random() * 900000);
+    const randomId = 'SB-' + Math.floor(100000 + Math.random() * 900000);
     setOrderId(randomId);
     setOrderConfirmed(true);
 

@@ -36,7 +36,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     .join('%0A');
 
   const whatsappOrderUrl = `https://wa.me/919876543210?text=${encodeURIComponent(
-    `Hello Minnie's Artisanal Bakehouse! 🥖%0AI would like to place an order:%0A%0A${decodeURIComponent(orderListText)}%0A%0ASubtotal: ₹${subtotal}%0ADelivery: ${deliveryFee === 0 ? 'FREE' : '₹' + deliveryFee}%0ATotal: ₹${total}%0A${orderNote ? 'Special Note: ' + orderNote : ''}`
+    `Hello Sravanthi's Bakery! 🥖%0AI would like to place an order:%0A%0A${decodeURIComponent(orderListText)}%0A%0ASubtotal: ₹${subtotal}%0ADelivery: ${deliveryFee === 0 ? 'FREE' : '₹' + deliveryFee}%0ATotal: ₹${total}%0A${orderNote ? 'Special Note: ' + orderNote : ''}`
   )}`;
 
   return (
