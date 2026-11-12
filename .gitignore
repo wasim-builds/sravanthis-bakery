@@ -6,3 +6,4 @@ scraped
 *.png
 *.jpg
 .DS_Store
+.vercel
