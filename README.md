@@ -2,6 +2,8 @@
 
 > Handcrafted Artisanal Bakery & E-Commerce Web Experience inspired by authentic homemade baking traditions and [Minnie Inti Ruchulu](https://minnieintiruchulu.com/).
 
+🌐 **Live Website**: [https://wasim-builds.github.io/sravanthis-bakery/](https://wasim-builds.github.io/sravanthis-bakery/)
+
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
