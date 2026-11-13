@@ -32,7 +32,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   // Build WhatsApp pre-filled order string
   const orderListText = items
-    .map((item, idx) => `${idx + 1}. ${item.name} (${item.selectedWeight}) x ${item.quantity} = ₹${item.price * item.quantity}`)
+    .map((item, idx) => {
+      let detail = `${idx + 1}. ${item.name} (${item.selectedWeight}) x ${item.quantity} = ₹${item.price * item.quantity}`;
+      if (item.customMessage) {
+        detail += ` [Piping Message: "${item.customMessage}"]`;
+      }
+      if (item.assortedItems && item.assortedItems.length > 0) {
+        detail += ` (Items: ${item.assortedItems.join(', ')})`;
+      }
+      return detail;
+    })
     .join('%0A');
 
   const whatsappOrderUrl = `https://wa.me/919876543210?text=${encodeURIComponent(
@@ -122,6 +131,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   <p className="text-[11px] text-stone-500 font-medium">
                     Package: <span className="text-bakery-crust font-semibold">{item.selectedWeight}</span>
                   </p>
+                  {item.customMessage && (
+                    <p className="text-[10px] text-bakery-burgundy bg-amber-50 border border-amber-200/60 rounded px-1.5 py-0.5 mt-0.5 font-medium truncate">
+                      Piping: <span className="italic">"{item.customMessage}"</span>
+                    </p>
+                  )}
+                  {item.assortedItems && item.assortedItems.length > 0 && (
+                    <p className="text-[10px] text-stone-600 bg-stone-100 rounded px-1.5 py-0.5 mt-0.5 line-clamp-1">
+                      Box: {item.assortedItems.join(', ')}
+                    </p>
+                  )}
                   <p className="text-xs font-bold text-stone-800 mt-0.5">
                     ₹ {item.price.toFixed(2)}
                   </p>

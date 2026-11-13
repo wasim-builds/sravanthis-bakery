@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, ShoppingBag, Eye, Star, Check } from 'lucide-react';
+import { Heart, ShoppingBag, Eye, Star, Check, Sparkles } from 'lucide-react';
 import { BakeryProduct, CartItem } from '../types/bakery';
 
 interface ProductCardProps {
@@ -8,6 +8,7 @@ interface ProductCardProps {
   onToggleWishlist: (product: BakeryProduct) => void;
   onAddToCart: (item: CartItem) => void;
   onQuickView: (product: BakeryProduct) => void;
+  onPersonalizeCake?: (product: BakeryProduct) => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -15,7 +16,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   isWishlisted,
   onToggleWishlist,
   onAddToCart,
-  onQuickView
+  onQuickView,
+  onPersonalizeCake
 }) => {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [isAddedFeedback, setIsAddedFeedback] = useState(false);
@@ -160,6 +162,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             })}
           </div>
         </div>
+
+        {/* Personalize Cake Button if Cake category */}
+        {product.category.toLowerCase() === 'cakes' && onPersonalizeCake && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onPersonalizeCake(product);
+            }}
+            className="w-full mt-2 py-1.5 px-2 bg-amber-50 hover:bg-amber-100/80 border border-amber-300 text-bakery-burgundy rounded-lg text-[11px] font-bold flex items-center justify-center gap-1.5 transition-all shadow-2xs"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-bakery-amber" />
+            <span>Personalize with Message</span>
+          </button>
+        )}
 
         {/* Pricing & Add to Cart Action */}
         <div className="pt-2 border-t border-stone-100 flex items-center justify-between gap-2 mt-auto">

@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { X, Star, ShoppingBag, ShieldCheck, Clock, MessageCircle, Check } from 'lucide-react';
+import { X, Star, ShoppingBag, ShieldCheck, Clock, MessageCircle, Check, Sparkles } from 'lucide-react';
 import { BakeryProduct, CartItem } from '../types/bakery';
 
 interface ProductQuickViewModalProps {
   product: BakeryProduct | null;
   onClose: () => void;
   onAddToCart: (item: CartItem) => void;
+  onPersonalizeCake?: (product: BakeryProduct) => void;
 }
 
 export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
   product,
   onClose,
-  onAddToCart
+  onAddToCart,
+  onPersonalizeCake
 }) => {
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -156,6 +158,20 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
 
             {/* Actions: Quantity + Add to Cart + WhatsApp */}
             <div className="space-y-2.5 pt-2">
+              {/* Cake Customization Trigger */}
+              {product.category.toLowerCase() === 'cakes' && onPersonalizeCake && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    onPersonalizeCake(product);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 bg-amber-50 hover:bg-amber-100/80 text-bakery-burgundy border border-amber-300 py-2 rounded-xl text-xs font-bold transition-all shadow-xs"
+                >
+                  <Sparkles className="w-4 h-4 text-bakery-amber" />
+                  <span>Personalize with Piping Message & Plaque</span>
+                </button>
+              )}
               <div className="flex items-center gap-3">
                 
                 {/* Quantity adjust */}

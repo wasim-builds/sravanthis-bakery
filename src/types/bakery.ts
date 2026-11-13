@@ -31,6 +31,10 @@ export interface CartItem {
   selectedWeight: string;
   price: number;
   quantity: number;
+  customMessage?: string;
+  customStyle?: string;
+  dietaryChoice?: 'eggless' | 'traditional';
+  assortedItems?: string[];
 }
 
 export interface CategoryItem {

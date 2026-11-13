@@ -27,31 +27,35 @@
 
 ---
 
-## 2. Planned Next Steps (Phase 2 Roadmap — To Resume Tomorrow)
+## 2. Completed Phase 2 Enhancements (Delivered)
 
 ### Track A: High-Impact Customer Conversion Features
-1. **Custom Cake Personalization & Piping Message**:
-   - Add text input on celebration cakes: *"Message on Cake (Max 30 characters)"* (*e.g. "Happy 30th Birthday Sravanthi!"*).
-   - Selection for chocolate plaque vs. white fondant banner.
-   - Dietary choice toggle: 100% Eggless vs. Traditional.
-2. **"Build Your Own Assorted Box" Modal (Croissants, Cookies & Puffs)**:
-   - Allow customer to pick any 4 or 6 bakes for a fixed box price:
-     * *Example Box of 4*: 2 Normandy Butter Croissants + 1 Pain au Chocolat + 1 Cinnamon Brioche.
-     * Dynamic counter showing items remaining to complete the box (`3/4 selected`).
-3. **Pincode Delivery Radius Checker**:
-   - Location input widget on the announcement banner or cart drawer:
-     * *Hyderabad Core (Pincodes 500001–500090)*: "⚡ Same-Day 2-Hour Express Delivery via Dunzo/Porter".
-     * *Rest of India*: "🚚 24–48 Hr Vacuum-Sealed Express Courier".
-4. **Live Oven Baking Countdown Ticker**:
-   - Subtle animated badge: *"Next warm sourdough batch coming out of the oven in 42 mins!"* creates appetite appeal and reinforces daily fresh-baked promise.
+- [x] **Custom Cake Personalization & Piping Message Modal**:
+  - Live preview of edible cocoa calligraphy on dark chocolate plaque, white fondant ribbon, or direct cream piping.
+  - Dietary choice toggle: 100% Eggless (Pure Veg) vs. Traditional Parisian.
+  - Serving & weight swatches with automatic dynamic price updates.
+  - Inscribed details persisted to cart and integrated into WhatsApp direct order string.
+- [x] **"Build Your Own Assorted Box" Modal (Croissants, Cookies & Puffs)**:
+  - Supports curated Box of 4 (₹399, save ₹100) or Box of 6 (₹579, save ₹180).
+  - Dynamic progress counter showing remaining items with encouraging feedback.
+  - Mix and match across 8 artisanal viennoiseries and savoury bakes.
+- [x] **Pincode Delivery Radius Checker**:
+  - Validates 6-digit Indian postal pincodes with automatic detection of Hyderabad metropolitan core (⚡ Same-day 2-hour express via Porter/Dunzo) vs. Pan-India express air cargo (🚚 24–48h vacuum-sealed).
+  - Persists validated pincode to `localStorage` and auto-populates in CheckoutModal.
+- [x] **Live Oven Baking Countdown Ticker**:
+  - Real-time animated ticker showing current hot oven batch and dynamic countdown timer (MM:SS) cycling through sourdoughs, croissants, and brioches.
 
 ### Track B: Payments & Retention
-1. **Dynamic Zero-Fee UPI QR Code Generator**:
-   - Modal generating an instant UPI QR code with deep links for Google Pay, PhonePe, and Paytm with pre-filled amount and order ID.
-2. **Weekly Sourdough Subscription Model**:
-   - "Subscribe & Save 10%" option on daily staples (Heritage Sourdough, Millet Wellness Loaf) with delivery days (e.g. Every Tuesday & Friday).
-3. **PWA (Progressive Web App) Setup**:
-   - Configure `vite-plugin-pwa` with web app manifest and icons so customers can install the app to their phone home screen.
+- [x] **Dynamic Zero-Fee UPI QR Code Generator**:
+  - Integrated into Checkout modal with crisp SVG QR code for `upi://pay?pa=sravanthisbakery@icici`.
+  - 1-Click mobile deep links for Google Pay, PhonePe, and Paytm / BHIM.
+  - 1-Click copy UPI ID with animated feedback.
+
+---
+
+## 3. Future Roadmap (Phase 3)
+1. **Weekly Sourdough Subscription Model**: "Subscribe & Save 10%" on daily staple loaves.
+2. **PWA (Progressive Web App) Setup**: Add manifest and offline service worker.
 
 ---
 

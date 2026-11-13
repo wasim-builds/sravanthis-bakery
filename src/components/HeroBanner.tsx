@@ -4,9 +4,10 @@ import { Sparkles, ShoppingBag, ArrowRight, ShieldCheck, Award } from 'lucide-re
 interface HeroBannerProps {
   onExploreClick: () => void;
   onCategoryClick: (catId: string) => void;
+  onOpenAssortedBox?: () => void;
 }
 
-export const HeroBanner: React.FC<HeroBannerProps> = ({ onExploreClick, onCategoryClick }) => {
+export const HeroBanner: React.FC<HeroBannerProps> = ({ onExploreClick, onCategoryClick, onOpenAssortedBox }) => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-r from-bakery-burgundyDark via-bakery-burgundy to-bakery-burgundyDeep text-white py-12 md:py-20 px-4 sm:px-6 lg:px-8 border-b-4 border-bakery-gold">
       {/* Subtle background texture overlay */}
@@ -52,8 +53,17 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ onExploreClick, onCatego
               onClick={() => onCategoryClick('sourdough')}
               className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium px-5 py-3.5 rounded-full border border-white/20 hover:border-white/40 transition-colors text-sm sm:text-base"
             >
-              <span>🥖 Sourdoughs & Breads</span>
+              <span>🥖 Breads & Loaves</span>
             </button>
+
+            {onOpenAssortedBox && (
+              <button
+                onClick={onOpenAssortedBox}
+                className="flex items-center gap-2 bg-bakery-gold/20 hover:bg-bakery-gold/30 text-bakery-gold font-bold px-5 py-3.5 rounded-full border border-bakery-gold/40 transition-all text-sm sm:text-base hover:scale-105 shadow-md"
+              >
+                <span>🎁 Build Treat Box (Save ₹180)</span>
+              </button>
+            )}
           </div>
 
           {/* Micro trust highlights */}

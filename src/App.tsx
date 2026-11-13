@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { AnnouncementBar } from './components/AnnouncementBar';
+import { LiveBakingCountdown } from './components/LiveBakingCountdown';
 import { Navbar } from './components/Navbar';
 import { HeroBanner } from './components/HeroBanner';
 import { CategoryStoryBar } from './components/CategoryStoryBar';
+import { PincodeChecker } from './components/PincodeChecker';
 import { ProductCard } from './components/ProductCard';
 import { ProductQuickViewModal } from './components/ProductQuickViewModal';
+import { CustomCakeModal } from './components/CustomCakeModal';
+import { AssortedBoxModal } from './components/AssortedBoxModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { WishlistModal } from './components/WishlistModal';
@@ -45,6 +49,8 @@ export const App: React.FC = () => {
 
   // Modals state
   const [quickViewProduct, setQuickViewProduct] = useState<BakeryProduct | null>(null);
+  const [personalizingCake, setPersonalizingCake] = useState<BakeryProduct | null>(null);
+  const [isAssortedBoxOpen, setIsAssortedBoxOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -175,6 +181,7 @@ export const App: React.FC = () => {
       
       {/* Top Banner & Header */}
       <AnnouncementBar />
+      <LiveBakingCountdown />
       <Navbar
         cartCount={cartCount}
         cartTotal={cartTotal}
@@ -198,6 +205,7 @@ export const App: React.FC = () => {
             setSelectedCategory(catId);
             scrollToProducts();
           }}
+          onOpenAssortedBox={() => setIsAssortedBoxOpen(true)}
         />
 
         {/* Circular Story Category Selector */}
@@ -212,6 +220,9 @@ export const App: React.FC = () => {
         {/* Main Product Catalog Section */}
         <section id="products-section" className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           
+          {/* Real-time Pincode & Express Delivery Checker */}
+          <PincodeChecker />
+
           {/* Header & Filter Controls */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-stone-200">
             <div>
@@ -344,6 +355,7 @@ export const App: React.FC = () => {
                     onToggleWishlist={handleToggleWishlist}
                     onAddToCart={handleAddToCart}
                     onQuickView={(p) => setQuickViewProduct(p)}
+                    onPersonalizeCake={(cake) => setPersonalizingCake(cake)}
                   />
                 );
               })}
@@ -373,6 +385,20 @@ export const App: React.FC = () => {
       <ProductQuickViewModal
         product={quickViewProduct}
         onClose={() => setQuickViewProduct(null)}
+        onAddToCart={handleAddToCart}
+        onPersonalizeCake={(cake) => setPersonalizingCake(cake)}
+      />
+
+      <CustomCakeModal
+        isOpen={!!personalizingCake}
+        onClose={() => setPersonalizingCake(null)}
+        cake={personalizingCake}
+        onAddToCart={handleAddToCart}
+      />
+
+      <AssortedBoxModal
+        isOpen={isAssortedBoxOpen}
+        onClose={() => setIsAssortedBoxOpen(false)}
         onAddToCart={handleAddToCart}
       />
 

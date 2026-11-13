@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, CheckCircle, Clock, MapPin, CreditCard, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { CartItem } from '../types/bakery';
+import { UpiPaymentWidget } from './UpiPaymentWidget';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -19,7 +20,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
-  const [pincode, setPincode] = useState('500081');
+  const [pincode, setPincode] = useState(() => {
+    return localStorage.getItem('sravanthi_bakery_pincode') || '500081';
+  });
   const [timeSlot, setTimeSlot] = useState('Morning 7:00 AM – 10:00 AM (Fresh Morning Bake)');
   const [paymentMethod, setPaymentMethod] = useState('upi');
   const [orderConfirmed, setOrderConfirmed] = useState(false);
@@ -95,6 +98,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               <p><strong>Dispatch Window:</strong> {timeSlot}</p>
               <p><strong>Total Amount:</strong> ₹{total.toFixed(2)} ({paymentMethod.toUpperCase()})</p>
             </div>
+
+            {paymentMethod === 'upi' && (
+              <UpiPaymentWidget amount={total} orderId={orderId} />
+            )}
 
             <p className="text-[11px] text-stone-400">
               A confirmation WhatsApp & SMS receipt has been dispatched to your phone.
@@ -202,7 +209,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
               <div className="grid grid-cols-3 gap-2">
                 {[
-                  { id: 'upi', label: 'UPI / GPay' },
+                  { id: 'upi', label: 'UPI / QR Code' },
                   { id: 'card', label: 'Cards' },
                   { id: 'cod', label: 'Pay on Delivery' }
                 ].map((m) => (
@@ -220,6 +227,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   </button>
                 ))}
               </div>
+
+              {paymentMethod === 'upi' && (
+                <UpiPaymentWidget amount={total} orderId="PREVIEW" />
+              )}
             </div>
 
             {/* Submit Button */}
