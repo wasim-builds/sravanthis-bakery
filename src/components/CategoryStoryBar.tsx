@@ -36,7 +36,7 @@ export const CategoryStoryBar: React.FC<CategoryStoryBarProps> = ({
                 {/* Circle Wrapper */}
                 <div className="relative mb-2">
                   <div
-                    className={`w-18 h-18 sm:w-22 sm:h-22 rounded-full p-1 transition-all duration-300 ${
+                    className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 transition-all duration-300 ${
                       isSelected
                         ? 'ring-4 ring-bakery-burgundy ring-offset-2 scale-105 shadow-md'
                         : 'ring-2 ring-stone-200 group-hover:ring-bakery-amber group-hover:scale-105'

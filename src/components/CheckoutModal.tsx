@@ -8,14 +8,16 @@ interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   items: CartItem[];
-  onOrderSuccess: () => void;
+  onOrderSuccess: (orderId?: string) => void;
+  onTrackOrder?: (orderId: string) => void;
 }
 
 export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   isOpen,
   onClose,
   items,
-  onOrderSuccess
+  onOrderSuccess,
+  onTrackOrder
 }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -56,7 +58,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       // fallback
     }
 
-    onOrderSuccess();
+    onOrderSuccess(randomId);
   };
 
   return (
@@ -107,15 +109,30 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               A confirmation WhatsApp & SMS receipt has been dispatched to your phone.
             </p>
 
-            <button
-              onClick={onClose}
-              className="bg-bakery-burgundy hover:bg-bakery-burgundyDark text-white px-6 py-2.5 rounded-xl font-semibold text-sm shadow-md transition-all"
-            >
-              Continue Shopping
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 pt-2">
+              {onTrackOrder && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    onTrackOrder(orderId);
+                  }}
+                  className="w-full sm:w-auto px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-xl font-bold text-xs transition-all shadow-sm flex items-center justify-center gap-1.5"
+                >
+                  <span>📍 Track Live Oven Status</span>
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-full sm:w-auto bg-bakery-burgundy hover:bg-bakery-burgundyDark text-white px-5 py-2.5 rounded-xl font-semibold text-xs shadow-md transition-all"
+              >
+                Continue Shopping
+              </button>
+            </div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-5 sm:p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+          <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 max-h-[85dvh] overflow-y-auto">
             
             {/* Quick Order Overview */}
             <div className="bg-bakery-creamLight p-3 rounded-xl border border-stone-200 text-xs flex justify-between items-center text-stone-700">

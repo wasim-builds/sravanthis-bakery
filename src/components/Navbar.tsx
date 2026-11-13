@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Heart, Search, Menu, X, PhoneCall, Sparkles, Calendar } from 'lucide-react';
+import { ShoppingBag, Heart, Search, Menu, X, PhoneCall, Sparkles, Calendar, Truck } from 'lucide-react';
 
 interface NavbarProps {
   cartCount: number;
@@ -8,6 +8,7 @@ interface NavbarProps {
   onOpenCart: () => void;
   onOpenWishlist: () => void;
   onOpenSubscription?: () => void;
+  onOpenOrderTracking?: () => void;
   selectedCategory: string;
   onSelectCategory: (id: string) => void;
   searchQuery: string;
@@ -21,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenCart,
   onOpenWishlist,
   onOpenSubscription,
+  onOpenOrderTracking,
   selectedCategory,
   onSelectCategory,
   searchQuery,
@@ -107,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Right Action Icons */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-2.5">
             {/* Bread Club Subscription Button */}
             {onOpenSubscription && (
               <button
@@ -117,6 +119,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 <Calendar className="w-3.5 h-3.5 text-amber-700" />
                 <span>Bread Club <span className="text-[10px] bg-amber-700 text-white font-bold px-1.5 py-0.2 rounded-full ml-0.5">10% OFF</span></span>
+              </button>
+            )}
+
+            {/* Track Order Button */}
+            {onOpenOrderTracking && (
+              <button
+                onClick={onOpenOrderTracking}
+                className="hidden lg:flex items-center gap-1.5 text-xs text-stone-600 hover:text-bakery-burgundy px-3 py-1.5 rounded-full border border-stone-200 hover:border-bakery-burgundy/40 transition-colors"
+                title="Track Live Order"
+              >
+                <Truck className="w-3.5 h-3.5 text-bakery-amber" />
+                <span className="font-medium">Track Order</span>
               </button>
             )}
 
@@ -132,12 +146,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Wishlist Button */}
             <button
               onClick={onOpenWishlist}
-              className="relative p-2.5 text-stone-700 hover:text-bakery-burgundy hover:bg-bakery-creamWarm rounded-full transition-colors"
+              className="relative p-2 sm:p-2.5 text-stone-700 hover:text-bakery-burgundy hover:bg-bakery-creamWarm rounded-full transition-colors"
               aria-label="Wishlist"
             >
               <Heart className={`w-5 h-5 ${wishlistCount > 0 ? 'fill-red-500 text-red-500' : ''}`} />
               {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-600 text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center shadow-sm animate-bounce">
+                <span className="absolute -top-1 -right-1 bg-red-600 text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center shadow-sm animate-pulse">
                   {wishlistCount}
                 </span>
               )}
@@ -229,6 +243,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                       Artisan Bread Club
                     </span>
                     <span className="text-[10px] font-bold bg-amber-700 text-white px-2 py-0.5 rounded-full">Save 10%</span>
+                  </button>
+                )}
+                {onOpenOrderTracking && (
+                  <button
+                    onClick={() => {
+                      onOpenOrderTracking();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-semibold bg-stone-100 text-stone-800 hover:bg-stone-200 transition-colors"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Truck className="w-4 h-4 text-bakery-amber" />
+                      Track Live Order
+                    </span>
+                    <span className="text-[10px] font-bold bg-stone-700 text-white px-2 py-0.5 rounded-full">Active</span>
                   </button>
                 )}
                 {navLinks.map((link) => (

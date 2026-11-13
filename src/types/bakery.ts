@@ -43,3 +43,27 @@ export interface CategoryItem {
   iconImage: string;
   badge?: string;
 }
+
+export interface CustomerReview {
+  id: string;
+  name: string;
+  location: string;
+  avatar: string;
+  review: string;
+  product: string;
+  rating: number;
+  date?: string;
+  verified?: boolean;
+}
+
+export interface OrderTrackInfo {
+  orderId: string;
+  customerName?: string;
+  phone?: string;
+  itemsSummary?: string;
+  status: 'fermenting' | 'baking' | 'packaging' | 'dispatched';
+  currentStep: number;
+  estimatedDelivery: string;
+  dispatchedVia: string;
+  batchNumber: string;
+}

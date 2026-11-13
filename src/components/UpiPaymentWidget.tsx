@@ -117,7 +117,7 @@ export const UpiPaymentWidget: React.FC<UpiPaymentWidgetProps> = ({ amount, orde
           </a>
           <a
             href={upiUrl}
-            className="py-1.5 px-2 rounded-lg bg-white border border-stone-200 text-purple-700 text-[11px] font-bold hover:bg-stone-100 transition-colors shadow-2xs"
+            className="py-1.5 px-2 rounded-lg bg-white border border-stone-200 text-[#5f259f] text-[11px] font-bold hover:bg-stone-100 transition-colors shadow-2xs"
           >
             PhonePe
           </a>

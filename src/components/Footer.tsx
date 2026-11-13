@@ -3,9 +3,17 @@ import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 
 interface FooterProps {
   onSelectCategory: (id: string) => void;
+  onOpenOrderTracking?: () => void;
+  onOpenWriteReview?: () => void;
+  onOpenSubscription?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
+export const Footer: React.FC<FooterProps> = ({ 
+  onSelectCategory,
+  onOpenOrderTracking,
+  onOpenWriteReview,
+  onOpenSubscription
+}) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -141,15 +149,33 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
           {/* Col 3: Customer Care */}
           <div>
             <h4 className="font-signika font-bold text-sm text-bakery-cream uppercase tracking-wider mb-3">
-              Customer Care
+              Customer Care & Community
             </h4>
             <ul className="space-y-2 text-xs text-stone-300">
-              <li><a href="#track" className="hover:text-bakery-gold transition-colors">Track Live Order</a></li>
-              <li><a href="#shipping" className="hover:text-bakery-gold transition-colors">Express Delivery Policy</a></li>
-              <li><a href="#storage" className="hover:text-bakery-gold transition-colors">Bread Care & Storage Guide</a></li>
-              <li><a href="#bulk" className="hover:text-bakery-gold transition-colors">Wedding & Custom Cake Inquiry</a></li>
-              <li><a href="#faq" className="hover:text-bakery-gold transition-colors">Frequently Asked Questions</a></li>
-              <li><a href="#terms" className="hover:text-bakery-gold transition-colors">Terms of Service & Refund Policy</a></li>
+              {onOpenOrderTracking && (
+                <li>
+                  <button onClick={onOpenOrderTracking} className="hover:text-bakery-gold transition-colors text-left flex items-center gap-1">
+                    <span>📍 Track Live Order</span>
+                  </button>
+                </li>
+              )}
+              {onOpenSubscription && (
+                <li>
+                  <button onClick={onOpenSubscription} className="hover:text-bakery-gold transition-colors text-left flex items-center gap-1">
+                    <span>🥖 Artisan Bread Club (Save 10%)</span>
+                  </button>
+                </li>
+              )}
+              {onOpenWriteReview && (
+                <li>
+                  <button onClick={onOpenWriteReview} className="hover:text-bakery-gold transition-colors text-left flex items-center gap-1">
+                    <span>⭐ Write a Customer Review</span>
+                  </button>
+                </li>
+              )}
+              <li><a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="hover:text-bakery-gold transition-colors">WhatsApp Order Support</a></li>
+              <li><a href="#faq" className="hover:text-bakery-gold transition-colors">Storage & Care Instructions</a></li>
+              <li><a href="#terms" className="hover:text-bakery-gold transition-colors">Terms of Fresh Delivery</a></li>
             </ul>
           </div>
 

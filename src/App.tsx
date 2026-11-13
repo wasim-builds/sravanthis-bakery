@@ -10,6 +10,8 @@ import { ProductQuickViewModal } from './components/ProductQuickViewModal';
 import { CustomCakeModal } from './components/CustomCakeModal';
 import { AssortedBoxModal } from './components/AssortedBoxModal';
 import { SubscriptionModal } from './components/SubscriptionModal';
+import { ReviewSubmissionModal } from './components/ReviewSubmissionModal';
+import { OrderTrackingModal } from './components/OrderTrackingModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { WishlistModal } from './components/WishlistModal';
@@ -18,8 +20,8 @@ import { Testimonials } from './components/Testimonials';
 import { InstagramFeed } from './components/InstagramFeed';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
-import { PRODUCTS } from './data/bakeryProducts';
-import { BakeryProduct, CartItem } from './types/bakery';
+import { PRODUCTS, TESTIMONIALS } from './data/bakeryProducts';
+import { BakeryProduct, CartItem, CustomerReview } from './types/bakery';
 import { SlidersHorizontal, AlertCircle } from 'lucide-react';
 
 export const App: React.FC = () => {
@@ -53,9 +55,57 @@ export const App: React.FC = () => {
   const [personalizingCake, setPersonalizingCake] = useState<BakeryProduct | null>(null);
   const [isAssortedBoxOpen, setIsAssortedBoxOpen] = useState(false);
   const [isSubscriptionOpen, setIsSubscriptionOpen] = useState(false);
+  const [isWriteReviewOpen, setIsWriteReviewOpen] = useState(false);
+  const [isOrderTrackingOpen, setIsOrderTrackingOpen] = useState(false);
+  const [trackedOrderId, setTrackedOrderId] = useState('');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+
+  // Persisted Customer Reviews
+  const [testimonials, setTestimonials] = useState<CustomerReview[]>(() => {
+    try {
+      const saved = localStorage.getItem('sravanthi_bakery_custom_reviews');
+      const customReviews: CustomerReview[] = saved ? JSON.parse(saved) : [];
+      const defaultReviews: CustomerReview[] = TESTIMONIALS.map((t, idx) => ({
+        id: `default-${idx}`,
+        name: t.name,
+        location: t.location,
+        avatar: t.avatar,
+        review: t.review,
+        product: t.product,
+        rating: t.rating,
+        verified: true,
+        date: 'Verified Buyer'
+      }));
+      return [...customReviews, ...defaultReviews];
+    } catch {
+      return TESTIMONIALS.map((t, idx) => ({
+        id: `default-${idx}`,
+        name: t.name,
+        location: t.location,
+        avatar: t.avatar,
+        review: t.review,
+        product: t.product,
+        rating: t.rating,
+        verified: true,
+        date: 'Verified Buyer'
+      }));
+    }
+  });
+
+  const handleAddReview = (newReview: CustomerReview) => {
+    setTestimonials((prev) => {
+      const updated = [newReview, ...prev];
+      try {
+        const customReviews = updated.filter((r) => r.id.startsWith('rev-'));
+        localStorage.setItem('sravanthi_bakery_custom_reviews', JSON.stringify(customReviews));
+      } catch (err) {
+        console.error(err);
+      }
+      return updated;
+    });
+  };
 
   // Sync cart & wishlist with localStorage
   useEffect(() => {
@@ -182,7 +232,10 @@ export const App: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-bakery-creamLight text-bakery-espresso">
       
       {/* Top Banner & Header */}
-      <AnnouncementBar onOpenSubscription={() => setIsSubscriptionOpen(true)} />
+      <AnnouncementBar 
+        onOpenSubscription={() => setIsSubscriptionOpen(true)}
+        onOpenOrderTracking={() => setIsOrderTrackingOpen(true)}
+      />
       <LiveBakingCountdown />
       <Navbar
         cartCount={cartCount}
@@ -191,6 +244,7 @@ export const App: React.FC = () => {
         onOpenCart={() => setIsCartOpen(true)}
         onOpenWishlist={() => setIsWishlistOpen(true)}
         onOpenSubscription={() => setIsSubscriptionOpen(true)}
+        onOpenOrderTracking={() => setIsOrderTrackingOpen(true)}
         selectedCategory={selectedCategory}
         onSelectCategory={(id) => {
           setSelectedCategory(id);
@@ -347,7 +401,7 @@ export const App: React.FC = () => {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
               {filteredProducts.map((product) => {
                 const isWishlisted = wishlist.some((p) => p.id === product.id);
 
@@ -372,7 +426,10 @@ export const App: React.FC = () => {
         <TrustFeatures />
 
         {/* Real Customer Testimonials */}
-        <Testimonials />
+        <Testimonials 
+          testimonials={testimonials}
+          onOpenWriteReview={() => setIsWriteReviewOpen(true)}
+        />
 
         {/* Fresh from Oven Instagram Gallery */}
         <InstagramFeed />
@@ -380,10 +437,15 @@ export const App: React.FC = () => {
       </main>
 
       {/* Comprehensive Footer */}
-      <Footer onSelectCategory={(catId) => {
-        setSelectedCategory(catId);
-        scrollToProducts();
-      }} />
+      <Footer 
+        onSelectCategory={(catId) => {
+          setSelectedCategory(catId);
+          scrollToProducts();
+        }}
+        onOpenOrderTracking={() => setIsOrderTrackingOpen(true)}
+        onOpenWriteReview={() => setIsWriteReviewOpen(true)}
+        onOpenSubscription={() => setIsSubscriptionOpen(true)}
+      />
 
       {/* Modals & Slide-out Drawers */}
       <ProductQuickViewModal
@@ -436,7 +498,26 @@ export const App: React.FC = () => {
         isOpen={isCheckoutOpen}
         onClose={() => setIsCheckoutOpen(false)}
         items={cart}
-        onOrderSuccess={handleClearCart}
+        onOrderSuccess={(newId) => {
+          if (newId) setTrackedOrderId(newId);
+          handleClearCart();
+        }}
+        onTrackOrder={(id) => {
+          setTrackedOrderId(id);
+          setIsOrderTrackingOpen(true);
+        }}
+      />
+
+      <ReviewSubmissionModal
+        isOpen={isWriteReviewOpen}
+        onClose={() => setIsWriteReviewOpen(false)}
+        onSubmitReview={handleAddReview}
+      />
+
+      <OrderTrackingModal
+        isOpen={isOrderTrackingOpen}
+        onClose={() => setIsOrderTrackingOpen(false)}
+        initialOrderId={trackedOrderId}
       />
 
       {/* Sticky Bottom-Right WhatsApp Floating Action Button */}

@@ -61,7 +61,7 @@ export const InstagramFeed: React.FC = () => {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white px-4 py-2 rounded-full text-xs font-bold shadow-xs hover:shadow-md transition-all"
+            className="flex items-center gap-2 bg-[#E1306C] hover:bg-[#c9245c] text-white px-4 py-2 rounded-full text-xs font-bold shadow-xs hover:shadow-md transition-all"
           >
             <InstagramIcon className="w-4 h-4" />
             <span>Follow Us on Instagram</span>
