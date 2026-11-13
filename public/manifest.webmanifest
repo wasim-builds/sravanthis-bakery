@@ -1,0 +1,48 @@
+{
+  "name": "Sravanthi's Artisanal Bakery — Handcrafted Sourdough & Viennoiserie",
+  "short_name": "Sravanthi's Bakery",
+  "description": "Hyderabad's premier 36-hour wild fermented sourdough, flaky French butter croissants, and artisanal cakes baked fresh at 5 AM daily.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCF7F0",
+  "theme_color": "#56150E",
+  "orientation": "portrait-primary",
+  "categories": ["food", "shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "/header_sravanthis_bakery.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/header_sravanthis_bakery.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Bread Club Subscription",
+      "short_name": "Bread Club",
+      "description": "Subscribe & save 10% on weekly oven-fresh sourdough loaves",
+      "url": "/#bread-club",
+      "icons": [{ "src": "/header_sravanthis_bakery.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Custom Cake Designer",
+      "short_name": "Custom Cakes",
+      "description": "Design custom celebration cake with edible cocoa calligraphy",
+      "url": "/#custom-cake",
+      "icons": [{ "src": "/header_sravanthis_bakery.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Build Assorted Box",
+      "short_name": "Assorted Box",
+      "description": "Mix & match box of 4 or 6 viennoiseries",
+      "url": "/#assorted-box",
+      "icons": [{ "src": "/header_sravanthis_bakery.png", "sizes": "96x96" }]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Heart, Search, Menu, X, PhoneCall, Sparkles } from 'lucide-react';
+import { ShoppingBag, Heart, Search, Menu, X, PhoneCall, Sparkles, Calendar } from 'lucide-react';
 
 interface NavbarProps {
   cartCount: number;
@@ -7,6 +7,7 @@ interface NavbarProps {
   wishlistCount: number;
   onOpenCart: () => void;
   onOpenWishlist: () => void;
+  onOpenSubscription?: () => void;
   selectedCategory: string;
   onSelectCategory: (id: string) => void;
   searchQuery: string;
@@ -19,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   wishlistCount,
   onOpenCart,
   onOpenWishlist,
+  onOpenSubscription,
   selectedCategory,
   onSelectCategory,
   searchQuery,
@@ -105,7 +107,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Right Action Icons */}
-          <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Bread Club Subscription Button */}
+            {onOpenSubscription && (
+              <button
+                onClick={onOpenSubscription}
+                className="hidden md:flex items-center gap-1.5 text-xs font-semibold text-amber-900 bg-amber-100 hover:bg-amber-200 border border-amber-300 px-3 py-1.5 rounded-full transition-all shadow-2xs hover:scale-105"
+                title="Sravanthi's Artisan Bread Club"
+              >
+                <Calendar className="w-3.5 h-3.5 text-amber-700" />
+                <span>Bread Club <span className="text-[10px] bg-amber-700 text-white font-bold px-1.5 py-0.2 rounded-full ml-0.5">10% OFF</span></span>
+              </button>
+            )}
+
             {/* Quick Call / Help */}
             <a
               href="tel:+919876543210"
@@ -202,6 +216,21 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
 
               <div className="flex flex-col space-y-3 mt-4">
+                {onOpenSubscription && (
+                  <button
+                    onClick={() => {
+                      onOpenSubscription();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-between py-2.5 px-3 rounded-lg text-sm font-semibold bg-amber-100 text-amber-900 border border-amber-300 transition-colors shadow-2xs"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-amber-700" />
+                      Artisan Bread Club
+                    </span>
+                    <span className="text-[10px] font-bold bg-amber-700 text-white px-2 py-0.5 rounded-full">Save 10%</span>
+                  </button>
+                )}
                 {navLinks.map((link) => (
                   <button
                     key={link.id}

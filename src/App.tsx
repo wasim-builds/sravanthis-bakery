@@ -9,6 +9,7 @@ import { ProductCard } from './components/ProductCard';
 import { ProductQuickViewModal } from './components/ProductQuickViewModal';
 import { CustomCakeModal } from './components/CustomCakeModal';
 import { AssortedBoxModal } from './components/AssortedBoxModal';
+import { SubscriptionModal } from './components/SubscriptionModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { WishlistModal } from './components/WishlistModal';
@@ -51,6 +52,7 @@ export const App: React.FC = () => {
   const [quickViewProduct, setQuickViewProduct] = useState<BakeryProduct | null>(null);
   const [personalizingCake, setPersonalizingCake] = useState<BakeryProduct | null>(null);
   const [isAssortedBoxOpen, setIsAssortedBoxOpen] = useState(false);
+  const [isSubscriptionOpen, setIsSubscriptionOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -180,7 +182,7 @@ export const App: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-bakery-creamLight text-bakery-espresso">
       
       {/* Top Banner & Header */}
-      <AnnouncementBar />
+      <AnnouncementBar onOpenSubscription={() => setIsSubscriptionOpen(true)} />
       <LiveBakingCountdown />
       <Navbar
         cartCount={cartCount}
@@ -188,6 +190,7 @@ export const App: React.FC = () => {
         wishlistCount={wishlist.length}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenWishlist={() => setIsWishlistOpen(true)}
+        onOpenSubscription={() => setIsSubscriptionOpen(true)}
         selectedCategory={selectedCategory}
         onSelectCategory={(id) => {
           setSelectedCategory(id);
@@ -206,6 +209,7 @@ export const App: React.FC = () => {
             scrollToProducts();
           }}
           onOpenAssortedBox={() => setIsAssortedBoxOpen(true)}
+          onOpenSubscription={() => setIsSubscriptionOpen(true)}
         />
 
         {/* Circular Story Category Selector */}
@@ -399,6 +403,12 @@ export const App: React.FC = () => {
       <AssortedBoxModal
         isOpen={isAssortedBoxOpen}
         onClose={() => setIsAssortedBoxOpen(false)}
+        onAddToCart={handleAddToCart}
+      />
+
+      <SubscriptionModal
+        isOpen={isSubscriptionOpen}
+        onClose={() => setIsSubscriptionOpen(false)}
         onAddToCart={handleAddToCart}
       />
 

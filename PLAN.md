@@ -53,13 +53,40 @@
 
 ---
 
-## 3. Future Roadmap (Phase 3)
-1. **Weekly Sourdough Subscription Model**: "Subscribe & Save 10%" on daily staple loaves.
-2. **PWA (Progressive Web App) Setup**: Add manifest and offline service worker.
+## 3. Completed Phase 3 Enhancements (Delivered)
+
+### Track A: Artisan Bread Club (Weekly Sourdough Subscription Model)
+- [x] **"Subscribe & Save 10% – 15%" Sourdough Subscription Modal**:
+  - 5 Signature 36-hour wild-fermented loaves:
+    1. San Francisco Country Sourdough (850g Family Loaf)
+    2. 100% Whole Wheat & Roasted Flax (800g Hearth Loaf)
+    3. Roasted Garlic & Fresh Rosemary Boule (750g Artisan Boule)
+    4. Kalamata Olive & Sun-Dried Tomato (800g Batard)
+    5. Traditional German Vollkornbrot (100% Dark Rye, 650g Dense Block)
+  - Customizable delivery frequency: 1x/week, 2x/week, or Daily morning bakes.
+  - Interactive delivery day toggles (e.g. Tuesday + Friday).
+  - Morning (7:00 – 8:30 AM before breakfast) vs. Evening (5:00 – 6:30 PM before dinner) slot picker.
+  - 4-Week Monthly Pass vs. 12-Week Season Pass (extra 5% discount).
+  - Dynamic price, total deliveries, and savings calculation with instant visual breakdown.
+  - Dual action pathways: 1-Click WhatsApp schedule activation with confetti + direct Add to Cart integration.
+
+### Track B: Progressive Web App (PWA) & Offline Shell
+- [x] **Full PWA Manifest (`manifest.webmanifest`)**:
+  - Standalone app display mode with theme color `#56150E` and background `#FCF7F0`.
+  - App icons, shortcuts (Artisan Bread Club, Fresh Bakes Catalog, Custom Cakes).
+- [x] **Offline Service Worker (`sw.js`)**:
+  - Pre-caches critical app shell (`/`, `/index.html`, `/manifest.webmanifest`, `/header_sravanthis_bakery.png`).
+  - Stale-while-revalidate strategy for static images and Google Fonts.
+  - Network-first navigation fallback for zero-downtime offline browsing.
+- [x] **Omnipresent UI Entry Points**:
+  - Header Navbar: Dedicated "Bread Club (10% OFF)" desktop pill & mobile drawer button.
+  - Top Announcement Bar: Interactive "Bread Club (Save 10%)" badge.
+  - Hero Showcase: Prominent "Artisan Bread Club (-10%)" gradient action CTA.
+  - Cart Basket: Dynamic "Plan:" tag for subscription items with doorstep delivery note.
 
 ---
 
-## 3. Deployment & Production Hosting Options
+## 4. Deployment & Production Hosting Options
 
 1. **Vercel / Cloudflare Pages / GitHub Pages**:
    - Add automated GitHub Actions deployment workflow (`.github/workflows/deploy.yml`) to deploy the Vite build instantly on every push.
@@ -68,7 +95,7 @@
 
 ---
 
-## 4. Quick Resume Commands for Next Session
+## 5. Quick Resume Commands for Next Session
 
 ```bash
 # 1. Navigate to workspace

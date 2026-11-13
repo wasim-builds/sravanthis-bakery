@@ -5,5 +5,8 @@ dist
 scraped
 *.png
 *.jpg
+!public/*.png
+!public/*.jpg
+*.tsbuildinfo
 .DS_Store
 .vercel

@@ -133,7 +133,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   </p>
                   {item.customMessage && (
                     <p className="text-[10px] text-bakery-burgundy bg-amber-50 border border-amber-200/60 rounded px-1.5 py-0.5 mt-0.5 font-medium truncate">
-                      Piping: <span className="italic">"{item.customMessage}"</span>
+                      {item.productId.startsWith('sub-') ? 'Plan: ' : 'Piping: '}
+                      <span className="italic">"{item.customMessage}"</span>
                     </p>
                   )}
                   {item.assortedItems && item.assortedItems.length > 0 && (

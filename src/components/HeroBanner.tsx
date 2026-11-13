@@ -5,9 +5,15 @@ interface HeroBannerProps {
   onExploreClick: () => void;
   onCategoryClick: (catId: string) => void;
   onOpenAssortedBox?: () => void;
+  onOpenSubscription?: () => void;
 }
 
-export const HeroBanner: React.FC<HeroBannerProps> = ({ onExploreClick, onCategoryClick, onOpenAssortedBox }) => {
+export const HeroBanner: React.FC<HeroBannerProps> = ({ 
+  onExploreClick, 
+  onCategoryClick, 
+  onOpenAssortedBox,
+  onOpenSubscription 
+}) => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-r from-bakery-burgundyDark via-bakery-burgundy to-bakery-burgundyDeep text-white py-12 md:py-20 px-4 sm:px-6 lg:px-8 border-b-4 border-bakery-gold">
       {/* Subtle background texture overlay */}
@@ -62,6 +68,15 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ onExploreClick, onCatego
                 className="flex items-center gap-2 bg-bakery-gold/20 hover:bg-bakery-gold/30 text-bakery-gold font-bold px-5 py-3.5 rounded-full border border-bakery-gold/40 transition-all text-sm sm:text-base hover:scale-105 shadow-md"
               >
                 <span>🎁 Build Treat Box (Save ₹180)</span>
+              </button>
+            )}
+
+            {onOpenSubscription && (
+              <button
+                onClick={onOpenSubscription}
+                className="flex items-center gap-2 bg-gradient-to-r from-amber-600/90 to-amber-700/90 hover:from-amber-600 hover:to-amber-700 text-white font-bold px-5 py-3.5 rounded-full border border-amber-400/50 transition-all text-sm sm:text-base hover:scale-105 shadow-md"
+              >
+                <span>🍞 Artisan Bread Club (-10%)</span>
               </button>
             )}
           </div>

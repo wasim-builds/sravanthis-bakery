@@ -1,7 +1,11 @@
 import React from 'react';
-import { Truck, MessageCircle, Clock } from 'lucide-react';
+import { Truck, MessageCircle, Clock, Calendar } from 'lucide-react';
 
-export const AnnouncementBar: React.FC = () => {
+interface AnnouncementBarProps {
+  onOpenSubscription?: () => void;
+}
+
+export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ onOpenSubscription }) => {
   return (
     <div className="bg-bakery-burgundyDark text-bakery-cream text-xs sm:text-sm py-2 px-4 border-b border-bakery-burgundy">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
@@ -10,6 +14,15 @@ export const AnnouncementBar: React.FC = () => {
           <span>
             <strong className="text-white">Worldwide & Pan-India Express Delivery:</strong> Vacuum-sealed fresh shipping!
           </span>
+          {onOpenSubscription && (
+            <button
+              onClick={onOpenSubscription}
+              className="hidden lg:inline-flex items-center gap-1 bg-amber-500/20 hover:bg-amber-500/30 text-bakery-gold border border-bakery-gold/40 px-2 py-0.5 rounded-full font-semibold transition-colors text-[11px] ml-2"
+            >
+              <Calendar className="w-3 h-3 text-bakery-amber" />
+              <span>Bread Club (Save 10%)</span>
+            </button>
+          )}
         </div>
         
         <div className="flex items-center gap-4 text-xs">

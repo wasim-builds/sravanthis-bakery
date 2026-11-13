@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥐</text></svg>" />
+    <link rel="apple-touch-icon" href="/header_sravanthis_bakery.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#56150E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Sravanthi's Bakery" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sravanthi's Bakery | Handcrafted Breads, Sourdoughs, Cakes & Pastries</title>
     <meta name="description" content="Authentic artisanal bakery. Freshly baked sourdoughs, croissants, celebratory cakes, cookies and savory treats baked fresh daily at Sravanthi's Bakery." />
@@ -13,5 +19,14 @@
   <body class="bg-bakery-creamLight text-bakery-espresso font-poppins antialiased selection:bg-bakery-burgundy selection:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch((err) => {
+            console.log('SW registration note:', err);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
